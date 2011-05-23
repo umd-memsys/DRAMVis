@@ -1,0 +1,9 @@
+DRAMVis: a visualization and comparison tool for DRAMSim2
+
+This visualization tool is written in C# and runs on mono. You'll probably want
+to install the mono libraries and monodevelop. We've included the project files
+for monodevelop and the NPlot.dll is used to draw the graphs. 
+
+This code is probably quite messy at this point, but it should work. 
+
+ 
