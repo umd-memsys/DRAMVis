@@ -21,7 +21,7 @@ namespace DRAMVis
 		private uint _NUM_RANKS = 2;
 		private uint _NUM_CHANS = 1;
 		private uint _CACHE_LINE_SIZE = 8;
-		private uint _JEDEC_DATA_BUS_WIDTH = 64;
+		private uint _JEDEC_DATA_BUS_BITS = 64;
 		private uint _TRANS_QUEUE_DEPTH = 8;
 		private uint _CMD_QUEUE_DEPTH = 8;
 		private bool _USE_LOW_POWER = true;
@@ -74,10 +74,10 @@ namespace DRAMVis
 		}
 		
 		[CategoryAttribute("System Settings"), DescriptionAttribute("Data bus width (in bytes) of a JEDEC standard system")]
-		public uint JEDEC_DATA_BUS_WIDTH
+		public uint JEDEC_DATA_BUS_BITS
 		{
-			get { return _JEDEC_DATA_BUS_WIDTH; }
-			set { _JEDEC_DATA_BUS_WIDTH = value; }
+			get { return _JEDEC_DATA_BUS_BITS; }
+			set { _JEDEC_DATA_BUS_BITS = value; }
 		}
 		
 		[CategoryAttribute("System Settings"), DescriptionAttribute("Time length of epoch (in cycles)")]
@@ -230,7 +230,7 @@ namespace DRAMVis
 			sw.WriteLine("NUM_RANKS="+this._NUM_RANKS);
 			sw.WriteLine("NUM_CHANS="+this._NUM_CHANS);
 			//sw.WriteLine("TOTAL_STORAGE="+this._TOTAL_STORAGE);
-			sw.WriteLine("JEDEC_DATA_BUS_WIDTH="+this._JEDEC_DATA_BUS_WIDTH);
+			sw.WriteLine("JEDEC_DATA_BUS_BITS="+this._JEDEC_DATA_BUS_BITS);
 			sw.WriteLine("CACHE_LINE_SIZE="+this._CACHE_LINE_SIZE);
 			sw.WriteLine("TRANS_QUEUE_DEPTH="+this._TRANS_QUEUE_DEPTH);
 			sw.WriteLine("CMD_QUEUE_DEPTH="+this._CMD_QUEUE_DEPTH);

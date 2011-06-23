@@ -445,11 +445,15 @@ namespace DRAMVis
 			selectedDeviceName = deviceComboBox.SelectedText;
 			VisFileReader vfr = new VisFileReader(DRAMSimPath + "/ini/" + selectedDeviceName);
 			deviceParameters = vfr.ReadDeviceData(DRAMSimPath + "/ini/" + selectedDeviceName);
+			if (deviceParameters == null)
+			{
+				Console.WriteLine("wtf"); 
+			}
 			
 			devicePropertyGrid.SelectedObject = null;
 			devicePropertyGrid.SelectedObject = deviceParameters;
 		
-			((SystemParameters)(systemPropertyGrid.SelectedObject)).TOTAL_STORAGE = (long)(systemParameters.JEDEC_DATA_BUS_WIDTH / deviceParameters.DEVICE_WIDTH) * systemParameters.NUM_RANKS * 
+			((SystemParameters)(systemPropertyGrid.SelectedObject)).TOTAL_STORAGE = (long)(systemParameters.JEDEC_DATA_BUS_BITS / deviceParameters.DEVICE_WIDTH) * systemParameters.NUM_RANKS * 
 				((long)deviceParameters.NUM_ROWS * deviceParameters.NUM_COLS * deviceParameters.DEVICE_WIDTH * deviceParameters.NUM_BANKS) / 8;
 			systemPropertyGrid.Refresh();
 		}
@@ -770,7 +774,7 @@ namespace DRAMVis
 							//highlight correct listing in device combo box
 							deviceComboBox.SelectedIndex = deviceComboBox.FindString(p[p.Length-2]);
 							
-							((SystemParameters)(systemPropertyGrid.SelectedObject)).TOTAL_STORAGE = (long)(systemParameters.JEDEC_DATA_BUS_WIDTH / deviceParameters.DEVICE_WIDTH) * systemParameters.NUM_RANKS * 
+							((SystemParameters)(systemPropertyGrid.SelectedObject)).TOTAL_STORAGE = (long)(systemParameters.JEDEC_DATA_BUS_BITS / deviceParameters.DEVICE_WIDTH) * systemParameters.NUM_RANKS * 
 								((long)deviceParameters.NUM_ROWS * deviceParameters.NUM_COLS * deviceParameters.DEVICE_WIDTH * deviceParameters.NUM_BANKS) / 8;
 							systemPropertyGrid.Refresh();
 						}
@@ -818,7 +822,7 @@ namespace DRAMVis
 					string[] pieces = vfc.filepath.Split(System.IO.Path.DirectorySeparatorChar);
 					deviceComboBox.SelectedIndex = deviceComboBox.FindString(pieces[pieces.Length-2]);
 					
-					((SystemParameters)(systemPropertyGrid.SelectedObject)).TOTAL_STORAGE = (long)(systemParameters.JEDEC_DATA_BUS_WIDTH / deviceParameters.DEVICE_WIDTH) * systemParameters.NUM_RANKS * 
+					((SystemParameters)(systemPropertyGrid.SelectedObject)).TOTAL_STORAGE = (long)(systemParameters.JEDEC_DATA_BUS_BITS / deviceParameters.DEVICE_WIDTH) * systemParameters.NUM_RANKS * 
 						((long)deviceParameters.NUM_ROWS * deviceParameters.NUM_COLS * deviceParameters.DEVICE_WIDTH * deviceParameters.NUM_BANKS) / 8;
 					systemPropertyGrid.Refresh();
 					

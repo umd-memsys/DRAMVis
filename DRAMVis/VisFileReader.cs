@@ -19,9 +19,13 @@ namespace DRAMVis
 		
 		public VisFileReader(string filename)
 		{
+			Console.WriteLine("Trying to load: "+filename); 
 			inputFile = File.OpenText(filename);
 		}
-		
+		private void BadParam(string key, string val, string other)
+		{
+			Console.WriteLine(other+":"+key+"="+val); 
+		}
 		public DeviceParameters ReadDeviceData(string deviceFile)
 		{		
 			string line;
@@ -171,8 +175,12 @@ namespace DRAMVis
 					deviceParameters.IDD7 = uint.Parse(val);
 					break;
 				default:
-					return null;
+					break;
 				}
+			}
+			if (deviceParameters == null)
+			{
+				Console.WriteLine("wtf return");
 			}
 			return deviceParameters;
 		}
@@ -220,8 +228,8 @@ namespace DRAMVis
 				case "CACHE_LINE_SIZE":
 					systemParameters.CACHE_LINE_SIZE = uint.Parse(val);
 					break;
-				case "JEDEC_DATA_BUS_WIDTH":
-					systemParameters.JEDEC_DATA_BUS_WIDTH = uint.Parse(val);
+				case "JEDEC_DATA_BUS_BITS":
+					systemParameters.JEDEC_DATA_BUS_BITS = uint.Parse(val);
 					break;
 				case "TRANS_QUEUE_DEPTH":
 					systemParameters.TRANS_QUEUE_DEPTH = uint.Parse(val);
@@ -327,7 +335,7 @@ namespace DRAMVis
 					systemParameters.VERIFICATION_OUTPUT = bool.Parse(val);
 					break;
 				default:
-					return null;
+					break;
 				}
 			}
 			return systemParameters;
