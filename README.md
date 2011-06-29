@@ -13,7 +13,8 @@ Here is a very short guide for how to build this tool:
 
 Unfortunately, at the moment some things have become broken in DRAMVis mainly because 
 parameters names in DRAMVis don't agree with the parameter names in DRAMSim2. 
-##However, at this time no one in our group has the time to maintain DRAMVis so you are on your own if you wish to use this software, i.e. it is unsupported.##
-
-**If you're interested in taking the time to fixup DRAMVis, we'll happily accept patches.**
+###However, at this time no one in our group has the time to maintain DRAMVis
+so you are on your own if you wish to use this software, i.e. it is
+unsupported. If you're interested in taking the time to fixup DRAMVis, we'll
+happily accept patches.###
 
